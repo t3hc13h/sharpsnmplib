@@ -9,7 +9,8 @@
     <AssemblyName>SharpSnmpLib.Mib</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>sharpsnmplib.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
     <DocumentationFile>bin\Release\SharpSnmpLib.Mib.xml</DocumentationFile>
     <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
     <NoStdLib>False</NoStdLib>
@@ -233,7 +234,6 @@
     <None Include="Resources\SNMPv2-SMI.module" />
     <None Include="Resources\SNMPv2-TC.module" />
     <None Include="Resources\SNMPv2-TM.module" />
-    <None Include="sharpsnmplib.snk" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">
@@ -258,16 +258,16 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="SharpSnmpLib.csproj">
-      <Project>{286DE6DB-8F95-4BD4-86A2-86488D2E0EE1}</Project>
-      <Name>SharpSnmpLib</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="SharpSnmpLib.csproj">
+      <Project>{286DE6DB-8F95-4BD4-86A2-86488D2E0EE1}</Project>
+      <Name>SharpSnmpLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" />
   <Target Name="BeforeBuild">

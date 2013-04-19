@@ -1152,7 +1152,14 @@ agentcapabilities_macro_module returns [AgentCapabilitiesModule result]
       WantModuleName($name);
     }
   (v1=value)? { $result.Value = $v1.result; }
-    'INCLUDES' L_BRACE v2=value { $result.Includes.Add($v2.result); }
+    'INCLUDES' L_BRACE v2=value 
+	{
+	 DefinedValue dfv = ($v2.result as DefinedValue);
+	 if(dfv != null){
+		 dfv.Module= $name.text;
+	 }
+	$result.Includes.Add($v2.result);
+	 }
   (COMMA v3=value)* R_BRACE { $result.Includes.Add($v3.result); }
   (va=agentcapabilities_macro_variation { $result.Variations.Add($va.result); })*
   ;

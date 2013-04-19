@@ -32,10 +32,13 @@ namespace Lextm.SharpSnmpLib.Mib
         private readonly IList<ISmiValue> _includes = new List<ISmiValue>();
         public ISmiValue Value;
         public IList<Variantion> Variations = new List<Variantion>();
+        private string _name;
+
+        public string Name { get { return _name; } }
 
         public AgentCapabilitiesModule(string name)
         {
-            
+            _name = name;
         }
 
         public IList<ISmiValue> Includes

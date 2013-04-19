@@ -39,7 +39,7 @@ namespace Lextm.SharpSnmpLib.Mib
 
         public Variantion(ISmiValue variationValue)
         {
-            
+            DefaultValue = variationValue;
         }
     }
 }

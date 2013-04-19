@@ -28,14 +28,29 @@ namespace Lextm.SharpSnmpLib.Mib
 {
     public class NamedNumber : ISmiValue
     {
+        public readonly string Name;
+        public readonly NumberLiteralValue Literalvalue;
+        public readonly DefinedValue DefinedValue;
         public NamedNumber(string name, NumberLiteralValue value)
         {
-            
+            Name = name;
+            Literalvalue = value;
         }
 
         public NamedNumber(string name, DefinedValue value)
         {
-            
+            Name = name;
+            DefinedValue = value;
+        }
+
+        public override string ToString()
+        {
+            var value = this.DefinedValue != null && this.DefinedValue.Value != null ? this.DefinedValue.Value : null;
+            if (value == null)
+            {
+                value = this.Literalvalue != null && this.Literalvalue.Value.HasValue ? this.Literalvalue.Value.ToString() : null;
+            }
+            return "{" + Name + ": " + value + "}";
         }
     }
 }

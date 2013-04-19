@@ -15,7 +15,8 @@
     <FileAlignment>512</FileAlignment>
     <SourceAnalysisOverrideSettingsFile>D:\sharpsnmplib_svn\SharpSnmpLib\Settings.SourceAnalysis</SourceAnalysisOverrideSettingsFile>
     <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>sharpsnmplib.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
     <DelaySign>False</DelaySign>
     <AssemblyOriginatorKeyMode>File</AssemblyOriginatorKeyMode>
     <SccProjectName>
@@ -177,7 +178,6 @@
     <None Include="Microsoft.VersionNumber.targets">
       <SubType>Designer</SubType>
     </None>
-    <None Include="sharpsnmplib.snk" />
     <None Include="System.Tuples\ConversionsGenerator.tt" Condition="'$(TargetFrameworkVersion)' == 'v3.5'">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ConversionsGenerator.cs</LastGenOutput>

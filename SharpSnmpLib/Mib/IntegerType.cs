@@ -38,5 +38,10 @@ namespace Lextm.SharpSnmpLib.Mib
         public IModule Module { get; set; }
 
         public Constraint Constraint { get; set; }
+
+        public IntegerType()
+        {
+            Name = "Integer";
+        }
     }
 }

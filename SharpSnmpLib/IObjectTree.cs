@@ -60,6 +60,9 @@ namespace Lextm.SharpSnmpLib
         /// <returns></returns>
         IDefinition Find(string moduleName, string name);
 
+
+        IModule GetModule(string name);
+
         /// <summary>
         /// Removes a module.
         /// </summary>

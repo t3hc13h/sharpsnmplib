@@ -33,9 +33,15 @@ namespace Lextm.SharpSnmpLib.Mib
     {
         public string Reference;
 
+        public EntityStatus Status { get; set; }
+
+        private string _desc;
+        public string Description { get { return _desc; } }
+
         public ObjectIdentityMacro(EntityStatus status, string description)
         {
-            
+            this.Status = status;
+            this._desc = description;
         }
 
         [CLSCompliant(false)]

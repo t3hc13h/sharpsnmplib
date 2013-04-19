@@ -133,6 +133,11 @@ namespace Lextm.SharpSnmpLib.Mib
             return _nameTable.ContainsKey(full) ? _nameTable[full] : null;
         }
 
+        public IModule GetModule(string name)
+        {
+            return _loaded[name];
+        }
+
         private Definition Find(string name)
         {
             return (from key in _nameTable.Keys

@@ -266,7 +266,7 @@ namespace Lextm.SharpSnmpLib
                 result.Append(".").Append(numerical[k].ToString(CultureInfo.InvariantCulture));
             }
 
-            return result.ToString();
+            return result.ToString().Substring(1);
         }
 
         /// <summary>
