@@ -84,8 +84,7 @@ namespace Lextm.SharpSnmpLib.Mib
             }
 
             _parentNode = parent;
-            uint[] id = string.IsNullOrEmpty(parent.Name) ?
-                null : parent._id; // null for root node    (use _id rather than GetNumericalForm to avoid the Clone)
+            uint[] id = string.IsNullOrEmpty(parent.Name) ? null : parent._id; // null for root node    (use _id rather than GetNumericalForm to avoid the Clone)
             _id = ObjectIdentifier.AppendTo(id, entity.Value);
             _parent = parent.Name;
             _name = entity.Name;
@@ -132,8 +131,13 @@ namespace Lextm.SharpSnmpLib.Mib
         /// </summary>
         public uint Value
         {
-            get { return _value; }
-            set { }
+            get
+            {
+                return _value;
+            }
+            set
+            {
+            }
         }
 
         public string ParentModule { get; set; }
@@ -145,8 +149,13 @@ namespace Lextm.SharpSnmpLib.Mib
 
         public string Parent
         {
-            get { return _parent; }
-            set { }
+            get
+            {
+                return _parent;
+            }
+            set
+            {
+            }
         }
         
         public IDefinition ParentDefinition
@@ -171,14 +180,20 @@ namespace Lextm.SharpSnmpLib.Mib
         /// </summary>
         public IEnumerable<IDefinition> Children
         {
-            get { return _children.Values; }
+            get
+            {
+                return _children.Values;
+            }
         }
 
         public DefinitionType Type { get; private set; }
 
         internal static Definition RootDefinition
         {
-            get { return new Definition(); }
+            get
+            {
+                return new Definition();
+            }
         }
         
         /// <summary>
@@ -186,7 +201,10 @@ namespace Lextm.SharpSnmpLib.Mib
         /// </summary>
         internal string TextualForm
         {
-            get { return _module + "::" + _name; }
+            get
+            {
+                return _module + "::" + _name;
+            }
         }
 
         /// <summary>
@@ -208,8 +226,13 @@ namespace Lextm.SharpSnmpLib.Mib
         /// </summary>
         public string Module
         {
-            get { return _module; }
-            set { }
+            get
+            {
+                return _module;
+            }
+            set
+            {
+            }
         }
         
         /// <summary>
@@ -217,8 +240,13 @@ namespace Lextm.SharpSnmpLib.Mib
         /// </summary>
         public string Name
         {
-            get { return _name; }
-            set { }
+            get
+            {
+                return _name;
+            }
+            set
+            {
+            }
         }
 
         public int Line { get; set; }
@@ -246,13 +274,11 @@ namespace Lextm.SharpSnmpLib.Mib
             }
 
             return (from Definition d in _children.Values select d.Add(node)).FirstOrDefault(result => result != null);
-
             // */
-
             /* algorithm 2: put parent locating task outside. slower, so dropped.
             if (_name != node.Parent)
             {
-                throw new ArgumentException("this node is not child of mine", "node");
+            throw new ArgumentException("this node is not child of mine", "node");
             }
             return new Definition(node, this);
             // */
@@ -264,15 +290,18 @@ namespace Lextm.SharpSnmpLib.Mib
         /// <param name="def"></param>
         public void Append(IDefinition def)
         {
-            if (!_children.ContainsKey(def.Value))
+            IDefinition existing;
+
+            if (_children.TryGetValue(def.Value, out existing))
             {
-                _children.Add(def.Value, def);
+                var nodeFormat = " {0}::{1} ({2})";
+                throw new ArgumentException("Duplicate node ID." + Environment.NewLine + "Existing: " + string.Format(nodeFormat, existing.Module, existing.Name, existing.Value) + Environment.NewLine + "Duplicate:" + string.Format(nodeFormat, def.Module, def.Name, def.Value));
             }
+            _children.Add(def.Value, def);
         }
 
         public void Clear()
         {
-            
         }
 
         internal static uint[] GetParent(IDefinition definition)    // Assume all IDefinition are Definition
@@ -286,7 +315,10 @@ namespace Lextm.SharpSnmpLib.Mib
         public string Description
         {
             // TODO: implement this.
-            get { return string.Empty; }
+            get
+            {
+                return string.Empty;
+            }
         }
 
         public IEntity Entity { get; private set; }
